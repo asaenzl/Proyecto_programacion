@@ -8,7 +8,7 @@ import random
 
 lista = 10
 
-lista_de_jugadores = random.sample(range(5, 100), lista)
+lista_de_jugadores = random.sample(range(4, 100), lista)
 float_list = [x/10 for x in lista_de_jugadores]
 print(float_list)
 print("Tamano de la lista: ", len(float_list))
@@ -43,5 +43,3 @@ for jugador in float_list:
         print("-" * 40)
     else:
         print("No pertenece a ninguna division")
-
-print("Estos son las divisiones")
