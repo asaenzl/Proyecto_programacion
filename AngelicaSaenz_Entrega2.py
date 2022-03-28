@@ -6,14 +6,17 @@
 
 import random
 
+#tamano de la lista
 lista = 10
 
-lista_de_jugadores = random.sample(range(4, 100), lista)
+#Generando lista de floats
+lista_de_jugadores = random.sample(range(4, 90), lista)
 float_list = [x/10 for x in lista_de_jugadores]
-print(float_list)
+print(sorted(float_list, reverse=True))
 print("Tamano de la lista: ", len(float_list))
 
-for jugador in float_list:
+#Asignacion de jugadores con respecto a la lista
+for jugador in sorted(float_list, reverse=True):
     if 0 <= jugador <= 0.99:
         print("Division Hierro")
         print("-" * 40)
@@ -43,3 +46,4 @@ for jugador in float_list:
         print("-" * 40)
     else:
         print("No pertenece a ninguna division")
+        print("-" * 40)
