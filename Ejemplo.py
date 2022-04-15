@@ -1,10 +1,11 @@
 import random
-
+import statistics
+import sys
 #tamano de la lista
 lista = 10
 
 #Generando lista de floats
-lista_de_jugadores = random.sample(range(4, 90), lista)
+lista_de_jugadores = random.sample(range(5, 100), lista)
 float_list = [x/10 for x in lista_de_jugadores]
 
 valores = {'Hierro': [],
@@ -22,6 +23,7 @@ valores = {'Hierro': [],
 for jugador in float_list:
     if 0 <= jugador <= 0.99:
         valores['Hierro'].append(jugador)
+
     elif 1 <= jugador <= 1.99:
         valores['Bronce'].append(jugador)
     elif 2 <= jugador <= 2.99:
@@ -36,11 +38,12 @@ for jugador in float_list:
         valores['Maestro'].append(jugador)
     elif 7 <= jugador <= 7.99:
         valores['Gran Maestro'].append(jugador)
-    elif 8 <= jugador <= 8.99:
+    elif 8 <= jugador:
         valores['Retador'].append(jugador)
 
 
-
+def promedio(lst):
+    return sum(lst)/len(lst)
 
 
 for k, v in valores.items():
@@ -48,3 +51,40 @@ for k, v in valores.items():
     print(v)
     print("-------------")
 
+for k, v in valores.items():
+    if any(v):
+        print(promedio(v))
+
+
+for k in valores:
+    print(k)
+
+
+
+print("Jugador con mayor division y puntuacion")
+print(max(valores[max(valores)].items()))
+print(max(valores.values()))
+
+res_min = min(float_list,key=lambda x:float(x))
+res_max = max(float_list,key=lambda x:float(x))
+print(res_max)
+print(res_min)
+print("-------------")
+print("Jugador con menor division y puntuacion")
+print(min(valores))
+print(min(valores.values()))
+
+list_emparejamiento_actual = []
+
+for k, v in valores.items():
+    if any(v):
+        list_emparejamiento_actual.append(k)
+
+res_min = min(float_list,key=lambda x:float(x))
+res_max = max(float_list,key=lambda x:float(x))
+print(list_emparejamiento_actual[-1])
+print(res_max)
+print(list_emparejamiento_actual[0])
+print(res_min)
+
+print(valores)
