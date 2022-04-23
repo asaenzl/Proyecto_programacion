@@ -1,7 +1,7 @@
 # Nombre: Angelica Saenz Lacayo
 #
 # Objetivos:
-# 1.Hacer un menu.
+# 1.Hacer un menu con las siguientes funciones.
 
 #Menu: funcion para hacer menu
 import random
@@ -22,7 +22,7 @@ def menu():
     print("[0] Salir del programa")
 
 
-float_list = []
+
 
 #Diccionario para guardar datos
 valores = {'Hierro': [],
@@ -41,9 +41,10 @@ def generar_users():
     lista = 30
     # Generando lista de floats
     lista_de_jugadores = random.sample(range(4, 90), lista)
-    float_list = [x / 10 for x in lista_de_jugadores]
-    print(float_list)
+    jugadores = [x / 10 for x in lista_de_jugadores]
+    return jugadores
 
+float_list = generar_users()
 
 #Ordenar los jugadores en las listas
 def ordernarjugadores():
@@ -145,7 +146,7 @@ def promedio_por_division():
         print(k)
         if any(v):
             pmd = promedio(v)
-            print(pmd)
+            print(round(pmd, 2))
 
 def promedio_por_division_seleccion(division):
     for k, v in valores.items():
@@ -153,7 +154,7 @@ def promedio_por_division_seleccion(division):
             print(k)
             if any(v):
                 pmd = promedio(v)
-                print(pmd)
+                print(round(pmd, 2))
 
 
 #Cantidad de jugadores por division
@@ -181,7 +182,7 @@ opcion = int(input("Digite alguna opcion: "))
 
 while opcion != 0:
     if opcion == 1:
-        generar_users()
+        print(float_list)
     elif opcion == 2:
         ordernarjugadores()
     elif opcion == 3:
@@ -200,13 +201,15 @@ while opcion != 0:
         opcion_ocho = str(input("Digite alguna opcion: "))
         promedio_por_division_seleccion(opcion_ocho)
     elif opcion == 9:
-        print(promedio(float_list))
+        print(round(promedio(float_list)))
     elif opcion == 10:
         cantidad_jugadores_division()
     elif opcion == 11:
         cantidad_jugadores_totales()
     else:
         print("Opcion invalida")
+
+
 
     print()
     menu()
