@@ -8,7 +8,7 @@ import random
 
 
 def menu():
-    print("[1] Lista de emparejamiento")
+    print("[1] Generar lista de jugadores")
     print("[2] Ordenar jugadores")
     print("[3] Lista inicial de jugadores")
     print("[4] Lista de cada division")
@@ -21,11 +21,8 @@ def menu():
     print("[11] Cantidad de jugadores totales")
     print("[0] Salir del programa")
 
-#tamano de la lista
-lista = 30
-# Generando lista de floats
-lista_de_jugadores = random.sample(range(4, 90), lista)
-float_list = [x / 10 for x in lista_de_jugadores]
+
+float_list = []
 
 #Diccionario para guardar datos
 valores = {'Hierro': [],
@@ -38,6 +35,14 @@ valores = {'Hierro': [],
                'Gran Maestro': [],
                "Retador": []
                }
+
+def generar_users():
+    # tamano de la lista
+    lista = 30
+    # Generando lista de floats
+    lista_de_jugadores = random.sample(range(4, 90), lista)
+    float_list = [x / 10 for x in lista_de_jugadores]
+    print(float_list)
 
 
 #Ordenar los jugadores en las listas
@@ -130,19 +135,53 @@ def mindivpts():
     print(res_min)
     print(list_emparejamiento_actual[0])
 
+
 #Promedio
 def promedio(lst):
     return sum(lst)/len(lst)
 
+def promedio_por_division():
+    for k, v in valores.items():
+        print(k)
+        if any(v):
+            pmd = promedio(v)
+            print(pmd)
 
+def promedio_por_division_seleccion(division):
+    for k, v in valores.items():
+        if k == division:
+            print(k)
+            if any(v):
+                pmd = promedio(v)
+                print(pmd)
+
+
+#Cantidad de jugadores por division
+def cantidad_jugadores_division():
+    for k, v in valores.items():
+        print(k)
+        if any(v):
+            count_elements = len(v)
+            print("Cantidad de jugadores: ", count_elements)
+
+        else:
+            print("No posee jugadores")
+        print("-------------")
+
+#Cantidad de jugadore totales
+def cantidad_jugadores_totales():
+    counter = 0
+    for i in float_list:
+        counter += 1
+    print(counter)
 
 
 menu()
 opcion = int(input("Digite alguna opcion: "))
 
-while opcion != 0 :
+while opcion != 0:
     if opcion == 1:
-        print(float_list)
+        generar_users()
     elif opcion == 2:
         ordernarjugadores()
     elif opcion == 3:
@@ -154,15 +193,18 @@ while opcion != 0 :
     elif opcion == 6:
         mindivpts()
     elif opcion == 7:
-        print("qw")
+        promedio_por_division()
     elif opcion == 8:
-        print("Eligio opcion 8")
+        print("Digite la division que desea")
+        lista_ini_jugadores()
+        opcion_ocho = str(input("Digite alguna opcion: "))
+        promedio_por_division_seleccion(opcion_ocho)
     elif opcion == 9:
         print(promedio(float_list))
     elif opcion == 10:
-        print("Eligio opcion 10")
+        cantidad_jugadores_division()
     elif opcion == 11:
-        print("Eligio opcion 11")
+        cantidad_jugadores_totales()
     else:
         print("Opcion invalida")
 
